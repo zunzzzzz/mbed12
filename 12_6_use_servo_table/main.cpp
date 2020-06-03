@@ -35,18 +35,29 @@ int main() {
     servo.period(.02);
 
     while(1) {
+        //TODO: revise this value according to your result
+        servo_control(-30.467850102145168);
 
-    //TODO: revise this value according to your result
-    servo_control(37.222);
+        steps = 0;
+        t.reset();
+        t.start();
 
-    steps = 0;
-    t.reset();
-    t.start();
+        wait(5);
 
-    wait(8);
+        float time = t.read();
 
-    float time = t.read();
+        pc.printf("%1.3f\r\n", (float)steps*6.5*3.14/32/time);
+        //TODO: revise this value according to your result
+        servo_control(39.613891970809355);
 
-    pc.printf("%1.3f\r\n", (float)steps*6.5*3.14/32/time);
+        steps = 0;
+        t.reset();
+        t.start();
+
+        wait(5);
+
+        time = t.read();
+
+        pc.printf("%1.3f\r\n", (float)steps*6.5*3.14/32/time);
     }
 }
